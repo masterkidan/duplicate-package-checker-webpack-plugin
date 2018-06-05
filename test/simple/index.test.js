@@ -50,7 +50,10 @@ describe("Simple dependency tree", function() {
     webpack(
       MakeConfig({
         exclude: function(instance) {
-          return instance.issuer === "./entry.js";
+          return (
+            instance.issuer === "./entry.js" ||
+            instance.issuer === ".\\entry.js"
+          );
         }
       }),
       function(err, stats) {
